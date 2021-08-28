@@ -1,26 +1,151 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="header">
+    <img src="./assets/images/logo.svg" alt="logo">
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="hero-section">
+    <div class="hero-image">
+      <img src="./assets/images/illustration-working.svg" alt="illustration">
+    </div>
+    <div class="hero-text">
+      <h1>More than just shorter links</h1>
+      <p>Build your brand's recognition and get detailed insights on how your links are performing.</p>
+      <button class="cta-btn">
+        Get Started
+      </button>
+    </div>
+  </div>
+  <div class="main">
+    <div class="short-it">
+      <input type="text" placeholder="Shorten a link here...">
+      <button class="short-btn">
+        Shorten It!
+      </button>
+    </div>
+    <div class="about">
+      <h1>Advanced Statistics</h1>
+      <p>Track how your links are performing across the web with our advanced statistics dashboard.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <img src="./assets/images/icon-brand-recognition.svg" alt="brand-recognition">
+        <h2>Brand Recognition</h2>
+        <p>Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content.</p>
+      </div>
+      <div class="stroke"></div>
+      <div class="feature">
+        <img src="./assets/images/icon-detailed-records.svg" alt="detailed-records">
+        <h2>Detailed Records</h2>
+        <p>Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.</p>
+      </div>
+      <div class="stroke"></div>
+      <div class="feature">
+        <img src="./assets/images/icon-fully-customizable.svg" alt="fully-customizable">
+        <h2>Fully Customizable</h2>
+        <p>Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.</p>
+      </div>
+    </div>
+  </div>
+  <div class="cta-section">
+    <h2>Boost your links today</h2>
+    <button class="cta-btn">
+      Get Started
+    </button>
+  </div>
+  <div class="footer">
+    <img src="./assets/images/logo.svg" alt="logo">
+    <ul class="footer-feature">
+      <h3>Features</h3>
+      <li>
+        <a href="#">
+          Link Shortening
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Branded Links
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Analytics
+        </a>
+      </li>
+    </ul>
+    <ul class="resources">
+      <h3>Resources</h3>
+      <li>
+        <a href="#">
+          Blog
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Developers
+        </a>
+      </li>
+      <li>
+        <a href="#">Support</a>
+      </li>
+    </ul>
+    <ul class="company">
+      <h3>Company</h3>
+      <li>
+        <a href="#">
+          About
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Our Team
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Careers
+        </a>
+      </li>
+      <li>
+        <a href="# ">
+          Contact
+        </a>
+      </li>
+    </ul>
+    <ul class="socials">
+      <li>
+        <a href="#">
+          <img src="./assets/images/icon-facebook.svg" alt="facebook">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./assets/images/icon-twitter.svg " alt="twitter">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./assets/images/icon-pinterest.svg" alt="pinterest">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./assets/images/icon-instagram.svg" alt="instagram">
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
