@@ -1,10 +1,44 @@
 <template>
-  <div class="header">
-    <img src="./assets/images/logo.svg" alt="logo">
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
+  <div class="header-box">
+    <div class="header">
+      <img src="./assets/images/logo.svg" alt="logo">
+      <div @click="modalOption" class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="modal" v-if="modal">
+      <ul class="modal-content">
+        <li>
+          <a href="#">
+            Features
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Pricing
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Resources
+          </a>
+        </li>
+
+  <hr>
+
+        <li>
+          <a href="#">
+            Login
+          </a>
+        </li>
+        <li class="sign">
+          <a href="#">
+            Sign Up
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
   <div class="hero-section">
@@ -51,13 +85,13 @@
     </div>
   </div>
   <div class="cta-section">
-    <h2>Boost your links today</h2>
+    <h1>Boost your links today</h1>
     <button class="cta-btn">
       Get Started
     </button>
   </div>
   <div class="footer">
-    <img src="./assets/images/logo.svg" alt="logo">
+    <img src="./assets/images/footerlogo.svg" alt="logo">
     <ul class="footer-feature">
       <h3>Features</h3>
       <li>
@@ -141,11 +175,344 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 
 export default {
-  name: 'App',
+  setup() {
+    const modal = ref(false)
+
+    const modalOption = () => {
+      if(modal.value == false) {
+        modal.value = true
+        console.log('shown')
+      } else {
+        modal.value = false
+        console.log('hidden')
+      }
+      
+    }
+    
+    return {
+      modal,
+      modalOption
+    }
+  }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.hamburger div {
+  width: 30px;
+  height: 3px;
+  background-color: hsl(0, 0%, 75%);
+  margin: 5px;
+}
+
+.modal {
+  margin: 4px 45px;
+  padding: 40px;
+  background-color: hsl(257, 27%, 26%);
+  border-radius: 10px;
+}
+
+.modal-content {
+  list-style: none;
+  text-align: center;
+}
+
+.modal-content li {
+  padding: 10px 0;
+}
+
+.modal-content li a  {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+}
+
+.modal-content .sign {
+  color: #fff;
+  background-color: hsl(180, 66%, 49%);
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+hr {
+  margin: 10px 0;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.hero-image {
+  width: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+}
+
+.hero-text {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.hero-text h1 {
+  color: hsl(257, 27%, 26%);
+}
+
+.hero-text p {
+  margin-top: 20px;
+  color: hsl(0, 0%, 75%);
+}
+
+.hero-text button {
+  color: #fff;
+  background-color: hsl(180, 66%, 49%);
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+.main {
+  position: relative;
+  background-color: hsl(0, 0%, 75%);
+  margin-top: 100px;
+  padding: 40px;
+}
+
+.main .short-it {
+  position: absolute;
+  top: -80px;
+  left: 10%;
+  width: 80%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: hsl(255, 11%, 22%);
+  background-image: url('./assets/images/bg-shorten-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main .short-it input {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.main .short-it input::placeholder {
+  font-weight: bold;
+  color: hsl(255, 11%, 22%);
+}
+
+.main .short-it .short-btn {
+  width: 100%;
+  color: #fff;
+  background-color: hsl(180, 66%, 49%);
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.about {
+  text-align: center;
+  margin: 100px 0;
+}
+
+.about h1 {
+  color: hsl(260, 8%, 14%);
+  margin-bottom: 20px;
+}
+
+.about p {
+  color: hsl(257, 7%, 63%);
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.feature {
+  position: relative;
+  padding: 30px;
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.feature img {
+  position: absolute;
+  top: -40px;
+  width: 80px;
+  padding: 20px;
+  background-color: hsl(255, 11%, 22%);
+  border-radius: 100px;
+}
+
+.feature h2 {
+  margin-top: 45px;
+  color: hsl(260, 8%, 14%);
+}
+
+.feature p {
+  margin: 15px 0;
+  line-height: 1.5em;
+  color: hsl(257, 7%, 63%);
+}
+
+.stroke {
+  width: 8px;
+  height: 100px;
+  background-color: hsl(180, 66%, 49%);
+}
+
+.cta-section {
+  padding: 100px 20px;
+  background-color: hsl(255, 11%, 22%);
+  background-image: url('./assets/images/bg-shorten-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-section h1 {
+  color: #fff;
+}
+
+.cta-section .cta-btn {
+  color: #fff;
+  background-color: hsl(180, 66%, 49%);
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(260, 8%, 14%);
+  padding: 50px 0;
+}
+
+.footer .footer-feature {
+  text-align: center;
+  list-style: none;
+  margin: 30px 0;
+}
+
+.footer .footer-feature h3 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.footer .footer-feature li {
+  padding: 10px 0;
+}
+
+.footer .footer-feature li a {
+  text-decoration: none;
+  color: hsl(257, 7%, 63%);
+}
+
+.resources {
+  text-align: center;
+  list-style: none;
+  margin: 30px 0;
+}
+
+.resources h3 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.resources li {
+  padding: 10px 0;
+}
+
+.resources li a {
+  text-decoration: none;
+  color: hsl(257, 7%, 63%);
+}
+
+.company {
+  text-align: center;
+  list-style: none;
+  margin: 30px 0;
+}
+
+.company h3 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.company li {
+  padding: 10px 0;
+}
+
+.company li a {
+  text-decoration: none;
+  color: hsl(257, 7%, 63%);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.socials li {
+  padding: 10px;
+}
 </style>
