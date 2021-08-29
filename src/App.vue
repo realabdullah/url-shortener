@@ -104,10 +104,10 @@
       <p class="short-url">
         {{ newLink }}
       </p>
-      <button class="short-btn">
+      <button @click="copyLink" class="short-btn" v-if="!linkCopy">
         Copy
       </button>
-      <button class="copy-btn">
+      <button class="copy-btn" v-else>
         Copied!
       </button>
     </div>
@@ -228,6 +228,7 @@
 <script>
 import { ref } from 'vue'
 import axios from 'axios'
+import useClipboard from 'vue-clipboard3'
 
 export default {
   setup() {
@@ -236,6 +237,9 @@ export default {
     const linkData = ref('')
     const newLink = ref('')
     const gettingLink = ref(false)
+    const linkCopy = ref(false)
+
+    const { toClipboard } = useClipboard()
 
     const modalOption = () => {
       if(modal.value == false) {
@@ -264,14 +268,26 @@ export default {
         console.log(error)
       })
     }
-    
+
+    const copyLink = async () => {
+      try {
+        await toClipboard(newLink.value)
+        console.log('Copied to clipboard')
+        linkCopy.value = true
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
     return {
       oldLink,
       shortLink,
       gettingLink,
       newLink,
       modal,
-      modalOption
+      modalOption,
+      copyLink,
+      linkCopy
     }
   }
 }
@@ -472,7 +488,6 @@ hr {
 }
 
 .main .shorted .copy-btn {
-  display: none;
   width: 100%;
   color: #fff;
   background-color: hsl(255, 11%, 22%);
