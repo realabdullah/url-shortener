@@ -91,7 +91,7 @@
   </div>
   <div class="main">
     <div class="short-it">
-      <input type="text" v-model="oldLink" placeholder="Shorten a link here...">
+      <input type="text" v-model="oldLink" placeholder="Shorten a link here..." required>
       <button @click="shortLink" class="short-btn">
         <p v-if="!gettingLink">Shorten It!</p>
         <img src="./assets/images/load.svg" alt="load" v-else>
@@ -274,6 +274,7 @@ export default {
         await toClipboard(newLink.value)
         console.log('Copied to clipboard')
         linkCopy.value = true
+        oldLink.value = ''
       } catch (e) {
         console.error(e)
       }
