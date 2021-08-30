@@ -252,21 +252,24 @@ export default {
     }
 
     const shortLink = async () => {
-      gettingLink.value = true
-      const api_url = 'https://api.shrtco.de/v2/shorten?url='
-      const givenLink = oldLink.value
-      const url = api_url + givenLink
-      axios.post(url)
-      .then(response => {
+      if(oldLink.value == '') {
         gettingLink.value = false
-        linkData.value = response.data
-        newLink.value = linkData.value.result.short_link
-        console.log(newLink)
-        document.querySelector('.shorted').style.display = 'block'
-      })
-      .catch(error => {
-        console.log(error)
-      })
+      } else {
+        gettingLink.value = true
+        const api_url = 'https://api.shrtco.de/v2/shorten?url='
+        const givenLink = oldLink.value
+        const url = api_url + givenLink
+        axios.post(url)
+        .then(response => {
+          gettingLink.value = false
+          linkData.value = response.data
+          newLink.value = linkData.value.result.short_link
+          document.querySelector('.shorted').style.display = 'block'
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      }
     }
 
     const copyLink = async () => {
